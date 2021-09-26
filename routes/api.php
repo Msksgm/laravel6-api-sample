@@ -18,5 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['api']], function () {
-    Route::resource('articles', 'Api\ArticleController');
+    Route::get('articles', 'Api\ArticleController@index');
+    Route::get('articles/{id}', 'Api\ArticleController@show');
+    Route::post('articles', 'Api\ArticleController@store');
+    Route::patch('articles/{id}', 'Api\ArticleController@update');
+    Route::delete('articles/{id}', 'Api\ArticleController@destroy');
 });
